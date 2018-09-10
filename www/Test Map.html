@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+    <style>
+      #floorButtons {
+        position: absolute;
+        z-index: 20;
+      }
+
+      #floorButtons button {
+        display: block;
+        width: 100%;
+      }
+    </style>
+  </head>
+  
+  <body>
+  <div style="position: relative">
+    <div id="map" style="height: 400px"></div>
+
+    <script>
+      var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
+        center: [56.4598, -2.9728],
+        zoom: 17,
+        indoorsEnabled: true
+      });
+
+      var entityIdsToColorIndex = {};
+      var colors = [
+          [255, 0, 0, 128],
+          [0, 255, 0, 128],
+          [0, 0, 255, 128]
+      ];
+
+      function onIndoorEntityClicked(event) {
+        event.ids.forEach(highlight);
+      }
+
+      function onIndoorMapEntered() {
+        map.indoors.setFloor(1);
+        map.setView([56.4598, -2.9728], 17);
+      }
+      
+      function highlight(id) {
+        entityIdsToColorIndex[id] = entityIdsToColorIndex[id] === undefined ? 0 : (entityIdsToColorIndex[id] + 1) % colors.length;
+        map.indoors.setEntityHighlights(id, colors[entityIdsToColorIndex[id]]);
+      }
+
+      map.indoors.on("indoormapenter", onIndoorMapEntered);
+      map.indoors.on("indoorentityclick", onIndoorEntityClicked);
+    </script>
+
+  </div>
+  </body>
+</html>
