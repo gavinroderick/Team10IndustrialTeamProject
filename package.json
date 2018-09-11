@@ -4,24 +4,20 @@
   "description": "WRLD Maps. A project by 4th years at the University of Dundee 2018/19",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha"
   },
-  "author":"Team 10",
-  "contributors": [
-    { "name" : "Gavin Roderick"},
-    {"name" : "Marcus Robertson-Jones" },
-    { "name" : "Mitchell McJannet" },
-    { "name" : "Warren Mansell" },
-    { "name" : "Andrei Lins" }
-  ],
+  "author": "Team 10",
   "license": "ISC",
   "repository": {
-    "type":"git",
-    "url":"https://github.com/gavinroderick/Team10IndustrialTeamProject"
+    "type": "git",
+    "url": "https://github.com/gavinroderick/Team10IndustrialTeamProject"
   },
   "dependencies": {
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "simplehttpserver": "^0.2.1"
+    "request": "^2.88.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4"
   }
 }
