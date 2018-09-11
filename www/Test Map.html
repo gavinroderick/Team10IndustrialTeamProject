@@ -18,7 +18,7 @@
   
   <body>
   <div style="position: relative">
-    <div id="map" style="height: 600px"></div>
+    <div id="map" style="height: 400px"></div>
 
     <script>
       var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
@@ -34,25 +34,13 @@
           [0, 0, 255, 128]
       ];
 
-      //Displaying the name of an indoor map
-      function onIndoorMapEntered(event) {        
-        var latLng = map.getCenter();        
-        var indoorMapId = event.indoorMap.getIndoorMapId();
-        var buildingName = event.indoorMap.getIndoorMapName();
-        
-        var popupOptions = { 
-          indoorMapId: indoorMapId, 
-          indoorMapFloorIndex: 0, 
-          autoClose: false, 
-          closeOnClick: false 
-        };
-        
-        var popup = L.popup(popupOptions)
-          .setLatLng(latLng)
-          .addTo(map)
-          .setContent(buildingName);
-        
-        map.on("popupclose", function() { map.indoors.exit(); })
+      function onIndoorEntityClicked(event) {
+        event.ids.forEach(highlight);
+      }
+
+      function onIndoorMapEntered() {
+        map.indoors.setFloor(1);
+        map.setView([56.4598, -2.9728], 17);
       }
       
       function highlight(id) {
@@ -61,6 +49,7 @@
       }
 
       map.indoors.on("indoormapenter", onIndoorMapEntered);
+      map.indoors.on("indoorentityclick", onIndoorEntityClicked);
     </script>
 
   </div>
