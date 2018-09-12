@@ -6,3 +6,8 @@ install:
 script:
   - node server.js
   - npm test
+
+branches:
+only:
+  - master
+  - staging
