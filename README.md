@@ -1,4 +1,5 @@
-# Team 10 Industrial Project
+# Team 10 Industrial Project 
+[![Build Status](https://travis-ci.com/gavinroderick/Team10IndustrialTeamProject.svg?branch=master)](https://travis-ci.com/gavinroderick/Team10IndustrialTeamProject)
 
 ### To run: 
 `npm install`

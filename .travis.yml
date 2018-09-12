@@ -3,6 +3,12 @@ node_js:
   - "node"
 install:
   - npm install
+before_script:
+  - node server.js &
 script:
-  - node server.js
   - npm test
+branches:
+only:
+  - master
+  - staging
+  - pipelinesetup
