@@ -2,10 +2,7 @@
   "name": "team10itp",
   "version": "1.0.0",
   "description": "WRLD Maps. A project by 4th years at the University of Dundee 2018/19",
-  "main": "index.js",
-  "scripts": {
-    "test": "./node_modules/.bin/mocha"
-  },
+  "main": "server.js",
   "author": "Team 10",
   "license": "ISC",
   "repository": {
@@ -13,11 +10,15 @@
     "url": "https://github.com/gavinroderick/Team10IndustrialTeamProject"
   },
   "dependencies": {
+    "chai": "^4.1.2",
+    "debug": "^4.0.1",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "request": "^2.88.0",
-    "chai": "^4.1.2",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "superagent": "^3.8.3"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha tests/* "
   }
 }

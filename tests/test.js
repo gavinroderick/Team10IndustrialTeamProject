@@ -1,34 +1,32 @@
-const expect = require("chai").expect,
-  request = require("request"),
-  url = "http://localhost:5000" 
-
-describe("Website", function(){
+const chai = require("chai");
+const expect = chai.expect;
+const request = require("superagent");
+const url = "http://localhost:5000";
   
-  describe("Index page", function(){
-    it("loads", function(){
-      request(url + '/', function(error, response, body){
-        expect(response.statusCode.to.equal(200))
-        done()
+describe("Index page", function(){
+  it("should return 200", function(done){
+    request
+      .get(url)
+      .then(res => {
+        expect(res.status).to.equal(200);
+        done();
       })
-    })
-  })
+      .catch(err => {
+        done(new Error(err.status + " - " + err.message));
+      });
+  });
+});
 
-  describe("Map page", function(){
-    it("loads", function(){
-      request(url + "/TestMap", function(error, response, body){
-        expect(response.statusCode.to.equal(200))
-        done()
+describe("TestMap page", function(){
+  it("should return 200", function(done){
+    request
+      .get(url + "/TestMap")
+      .then(res => {
+        expect(res.status).to.equal(200);
+        done();
       })
-    })
-  })
-
-  describe("404 page", function(){
-    it("returns 404 correctly", function(){
-      request(url + "/fdghdfdgjhgnjf", function(error, response, body){
-        expect(response.statusCode.to.equal(404))
-        done()
-      })
-    })
-  })
-
-})
+      .catch(err => {
+        done(new Error(err.status + " - " + err.message));
+      });
+  });
+});
