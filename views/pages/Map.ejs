@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+
+    <link href="https://cdn-webgl.wrld3d.com/wrldjs/addons/resources/latest/css/wrld.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/indoor_control/latest/indoor_control.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <% include ../partials/header.ejs %>
+  </head>
+  
+  <body>
+    <div id="setting">
+      <h1>Settings</a>
+       <div>
+        <button onclick="setEntityHighlights()">Highlight entities</button>
+      </div>
+      <div>
+        <button onclick="clearEntityHighlights()">Clear entities highlights</button>
+    </div> 
+    </div>   
+    <div style="position: relative; margin-left: 20%">
+      
+      <div id="widget-container" class="wrld-widget-container"></div>
+      <div id="map" style="height: 750px"></div>
+      <script>
+        var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
+          center: [56.4598, -2.9728],
+          zoom: 17,
+          indoorsEnabled: true
+        });
+
+        function setEntityHighlights() {
+        <!-- first floor shops -->
+        map.indoors.setEntityHighlights("15", randomColor());  
+        map.indoors.setEntityHighlights("17", randomColor()); 
+        map.indoors.setEntityHighlights("19", randomColor());  
+        map.indoors.setEntityHighlights("111", randomColor());
+        map.indoors.setEntityHighlights("113", randomColor());
+        map.indoors.setEntityHighlights("114", randomColor());
+        map.indoors.setEntityHighlights("115", randomColor());
+        map.indoors.setEntityHighlights("116", randomColor());
+        map.indoors.setEntityHighlights("117", randomColor());
+        map.indoors.setEntityHighlights("118", randomColor());
+        map.indoors.setEntityHighlights("119", randomColor());
+        map.indoors.setEntityHighlights("120", randomColor());
+        map.indoors.setEntityHighlights("121", randomColor());
+        map.indoors.setEntityHighlights("122", randomColor());
+        map.indoors.setEntityHighlights("123", randomColor());
+        map.indoors.setEntityHighlights("124", randomColor());
+        map.indoors.setEntityHighlights("125", randomColor());
+        map.indoors.setEntityHighlights("126", randomColor());
+        map.indoors.setEntityHighlights("127", randomColor());
+        map.indoors.setEntityHighlights("129", randomColor());
+        map.indoors.setEntityHighlights("131", randomColor());
+        map.indoors.setEntityHighlights("132", randomColor());
+        map.indoors.setEntityHighlights("133", randomColor());
+        map.indoors.setEntityHighlights("134", randomColor());
+
+        <!-- Same shop - Superdrug -->
+        map.indoors.setEntityHighlights("135", randomColor());
+        map.indoors.setEntityHighlights("138", randomColor());
+        
+        <!-- Same shop - New Look -->
+        map.indoors.setEntityHighlights("137", randomColor());
+        map.indoors.setEntityHighlights("140", randomColor());
+        
+        map.indoors.setEntityHighlights("141", randomColor());
+        map.indoors.setEntityHighlights("158", randomColor());
+        map.indoors.setEntityHighlights("156", randomColor());
+        map.indoors.setEntityHighlights("155", randomColor());
+        map.indoors.setEntityHighlights("171", randomColor());
+        map.indoors.setEntityHighlights("170", randomColor());
+        map.indoors.setEntityHighlights("154", randomColor());
+        map.indoors.setEntityHighlights("153", randomColor());
+        map.indoors.setEntityHighlights("152", randomColor());
+        map.indoors.setEntityHighlights("151", randomColor());
+        map.indoors.setEntityHighlights("150", randomColor());
+
+        <!-- Second Floor -->
+
+
+      }
+
+      function randomColor(){
+        var red = Math.floor(Math.random() * 256);
+        var green = 255 - red;
+        return [red, green, 0, 200]
+      }
+
+      function clearEntityHighlights() {
+        map.indoors.clearEntityHighlights();
+      }
+
+        var indoorControl = new WrldIndoorControl("widget-container", map);
+
+        function onIndoorMapEntered() {
+          map.indoors.setFloor(0);
+          map.setView([56.4598, -2.9728], 17);
+        }
+
+          map.indoors.on("indoormapenter", onIndoorMapEntered);
+    </script>
+  </div>
+  </body>
+</html>

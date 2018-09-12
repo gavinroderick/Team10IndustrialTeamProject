@@ -2,3 +2,27 @@ body{
     background-color:honeydew;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+#setting{
+	height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+}
+
+#setting h1 {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 26px;
+    color: #ffffff;
+    display: block;
+    text-align : center;
+}
+
+#mapContainer {
+    margin-left: 20%;
+    padding: 0px 0px;
+}
