@@ -2,7 +2,9 @@
 
 ### To run: 
 `npm install`
+
 `cd www`
+
 `simplehttpserver [directory]` 
 
 or
