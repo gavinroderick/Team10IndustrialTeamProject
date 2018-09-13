@@ -1,0 +1,16 @@
+<div>
+    <h3>Settings</h3>
+    
+    <label>Occupancy</label>
+    <input id="occupancy-slider" onchange="sliderValueUpdate('occupancy')" type="range" min="10" max="50" step="10"></input>
+    <input id="occupancy-text" type="text" onchange="textValueUpdate('occupancy')" value="30"></input>
+
+    <label>noise</label>
+    <input id="noise-slider" onchange="sliderValueUpdate('noise')" type="range" min="10" max="50" step="10"></input>
+    <input id="noise-text" type="text" onchange="textValueUpdate('noise')" ></input>
+
+    <label>humidity</label>
+    <input id="humidity-slider" onchange="sliderValueUpdate('humidity')" type="range" min="10" max="50" step="10"></input>
+    <input id="humidity-text" type="text" onchange="textValueUpdate('humidity')"></input>
+</div>
+<script src="js/settings.js"></script>

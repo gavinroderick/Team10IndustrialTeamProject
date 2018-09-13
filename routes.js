@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function(app){
     /*app.route('/example')
         .get((req,res) => res.render('pages/example')); <--- NOTE THE SEMICOLON */
     app.route('/')
@@ -6,5 +6,5 @@ module.exports = function(app) {
     app.route('/TestMap')
         .get((req,res) => res.render('pages/TestMap'));
     app.route('/Maps')
-    .get((req,res) => res.render('pages/Map'));
+        .get((req,res) => res.render('pages/Map'));
 }
