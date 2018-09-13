@@ -1,0 +1,112 @@
+{
+  "stores": [
+    {
+      "store" : "Sports Direct",
+      "id" : 242
+    },
+    {
+      "store" : "Argos",
+      "id" : 243
+    },
+    {
+      "store" : "Debenhams",
+      "id" : 240
+    },
+    {
+      "store" : "USC",
+      "id" : 234
+    },
+    {
+      "store" : "Footasylum",
+      "id" : 233
+    },
+    {
+      "store" : "Currency Exchange",
+      "id" : 231
+    },
+    {
+      "store" : "Fuel",
+      "id" : 232
+    },
+    {
+      "store" : "Lush",
+      "id" : 24
+    },
+    {
+      "store" : "Vison Express",
+      "id" : 25
+    },
+    {
+      "store" : "The Gentleman's Lounge",
+      "id" : 26
+    },
+    {
+      "store" : "Menkind",
+      "id" : 27
+    },
+    {
+      "store" : "Super Dry",
+      "id" : 28
+    },
+    {
+      "store" : "TopMan",
+      "id" : 29
+    },
+    {
+      "store" : "Thomson",
+      "id" : 211
+    },
+    {
+      "store" : "Stormfront",
+      "id" : 212
+    },
+    {
+      "store" : "Spudulike",
+      "id" : 216
+    },
+    {
+      "store" : "Subway",
+      "id" : 217
+    },
+    {
+      "store" : "New Look",
+      "id" : 251
+    },
+    {
+      "store" : "Boots",
+      "id" : 245
+    },
+    {
+      "store" : "Primark",
+      "id" : 244
+    },
+    {
+      "store" : "REGIS",
+      "id" : 227
+    },
+    {
+      "store" : "Garage Street Shoes",
+      "id" : 226
+    },
+    {
+      "store" : "Ness",
+      "id" : 225
+    },
+    {
+      "store" : "Chopstix",
+      "id" : 224
+    },
+    {
+      "store" : "Elegance Hair & Beauty",
+      "id" : 223
+    },
+    {
+      "store" : "Hawkin's Bazaar",
+      "id" : 222
+    },
+    {
+      "store" : "Starbucks",
+      "id" : 220
+    }
+  ]
+}
