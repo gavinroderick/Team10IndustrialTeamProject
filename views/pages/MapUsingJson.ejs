@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+
+    <link href="https://cdn-webgl.wrld3d.com/wrldjs/addons/resources/latest/css/wrld.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/indoor_control/latest/indoor_control.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <% include ../partials/header.ejs %>
+  </head>
+  
+  <body>
+    <div id="setting">
+      <h1>Settings</a>
+       <div>
+        <button onclick="setEntityHighlights()">Highlight entities</button>
+      </div>
+      <div>
+        <button onclick="clearEntityHighlights()">Clear entities highlights</button>
+    </div> 
+    </div>   
+    <div style="position: relative; margin-left: 20%">
+      
+      <div id="widget-container" class="wrld-widget-container"></div>
+      <div id="map" style="height: 750px"></div>
+      <script>
+
+      	var requestURL = 'https://api.myjson.com/bins/15bmcg';
+      	var request = new XMLHttpRequest();
+      	request.open('GET', requestURL);
+      	request.send();
+
+      	var groundFloor;
+
+      	request.onload = function() {
+      		var groundFloorStores = request.response;
+      		var obj = JSON.parse(groundFloorStores);
+      		groundFloor = obj;
+
+      		/*
+      		for(var i = 0; i < obj.stores.length; i++){
+        		console.log(obj.stores[i].id);
+        	}*/
+      	}
+
+        var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
+          center: [56.4598, -2.9728],
+          zoom: 17,
+          indoorsEnabled: true
+        });
+
+        function setEntityHighlights() {
+        	
+        	for(var i = 0; i < groundFloor.stores.length; i++){
+        		map.indoors.setEntityHighlights(groundFloor.stores[i].id.toString(), randomColor());
+        	}
+      }
+
+      function randomColor(){
+        var red = Math.floor(Math.random() * 256);
+        var green = 255 - red;
+        return [red, green, 0, 200]
+      }
+
+      function clearEntityHighlights() {
+        map.indoors.clearEntityHighlights();
+      }
+
+        var indoorControl = new WrldIndoorControl("widget-container", map);
+
+        function onIndoorMapEntered() {
+          map.indoors.setFloor(0);
+          map.setView([56.4598, -2.9728], 17);
+        }
+
+          map.indoors.on("indoormapenter", onIndoorMapEntered);
+    </script>
+  </div>
+  </body>
+</html>
