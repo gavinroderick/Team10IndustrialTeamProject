@@ -1,0 +1,37 @@
+<section id="settings">
+    <h3>Settings</h3>
+
+    <div class="category" id="Occupancy">
+        <label>Occupancy</label><br>
+        <span class="end-labels">Low</span>
+        <input id="occupancy-slider" class="rangePicker" type="range"></input>
+        <!-- <input id="occupancy-text" class="textBox" type="text" onchange="textValueUpdate('occupancy')" value="30"></input><br> -->
+        <span class="end-labels">High</span>
+    </div>
+    <br>
+    <div class="category" id="Noise">
+        <label>Noise</label><br>
+        <span class="end-labels">Low</span>
+        <input id="noise-slider"class="rangePicker" type="range"></input>
+        <span class="end-labels">Low</span>
+        <!-- <input id="noise-text"  class="textBox" type="text" onchange="textValueUpdate('noise')" ></input><br> -->
+    </div>
+    </br>
+    <div class="category" id="Humidity">
+        <label>Humidity</label><br>
+        <span class="end-labels">Low</span>
+        <input id="humidity-slider" class="rangePicker" type="range"></input>
+        <span class="end-labels">Low</span>
+        <!-- <input id="humidity-text" class="textBox" type="text" onchange="textValueUpdate('humidity')"></input><br> -->
+    </div>
+
+    <div class="presets">
+            <h5>Very Pretty Presets</h5>
+            <button onclick="presetsUpdate(0)" id="SAD">SAD</p>
+            <button onclick="presetsUpdate(1)"id="NORMAL">NORMAL</p>
+            <button onclick="presetsUpdate(2)"id="GOOD">GOOD</p>
+    </div>
+   
+</section>
+
+<script src="js/settings.js"></script>
