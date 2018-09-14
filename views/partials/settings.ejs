@@ -1,16 +1,37 @@
-<div>
+<section id="settings">
     <h3>Settings</h3>
-    
-    <label>Occupancy</label>
-    <input id="occupancy-slider" onchange="sliderValueUpdate('occupancy')" type="range" min="10" max="50" step="10"></input>
-    <input id="occupancy-text" type="text" onchange="textValueUpdate('occupancy')" value="30"></input>
 
-    <label>noise</label>
-    <input id="noise-slider" onchange="sliderValueUpdate('noise')" type="range" min="10" max="50" step="10"></input>
-    <input id="noise-text" type="text" onchange="textValueUpdate('noise')" ></input>
+    <div class="category" id="Occupancy">
+        <label>Occupancy</label><br>
+        <span class="end-labels">Low</span>
+        <input id="occupancy-slider" class="rangePicker" type="range"></input>
+        <!-- <input id="occupancy-text" class="textBox" type="text" onchange="textValueUpdate('occupancy')" value="30"></input><br> -->
+        <span class="end-labels">High</span>
+    </div>
+    <br>
+    <div class="category" id="Noise">
+        <label>Noise</label><br>
+        <span class="end-labels">Low</span>
+        <input id="noise-slider"class="rangePicker" type="range"></input>
+        <span class="end-labels">Low</span>
+        <!-- <input id="noise-text"  class="textBox" type="text" onchange="textValueUpdate('noise')" ></input><br> -->
+    </div>
+    </br>
+    <div class="category" id="Humidity">
+        <label>Humidity</label><br>
+        <span class="end-labels">Low</span>
+        <input id="humidity-slider" class="rangePicker" type="range"></input>
+        <span class="end-labels">Low</span>
+        <!-- <input id="humidity-text" class="textBox" type="text" onchange="textValueUpdate('humidity')"></input><br> -->
+    </div>
 
-    <label>humidity</label>
-    <input id="humidity-slider" onchange="sliderValueUpdate('humidity')" type="range" min="10" max="50" step="10"></input>
-    <input id="humidity-text" type="text" onchange="textValueUpdate('humidity')"></input>
-</div>
+    <div class="presets">
+            <h5>Very Pretty Presets</h5>
+            <button onclick="presetsUpdate(0)" id="SAD">SAD</p>
+            <button onclick="presetsUpdate(1)"id="NORMAL">NORMAL</p>
+            <button onclick="presetsUpdate(2)"id="GOOD">GOOD</p>
+    </div>
+   
+</section>
+
 <script src="js/settings.js"></script>
