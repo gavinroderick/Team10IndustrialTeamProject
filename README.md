@@ -14,3 +14,9 @@ for Python 2.7:
 
 `python -m SimpleHTTPServer 8000`
 
+
+#To use MapsWithJSON.ejs
+
+host the JSON files in the JSON folder somewhere (http://myjson.com/)
+
+assign the url string to the requestURL variable and it should work
