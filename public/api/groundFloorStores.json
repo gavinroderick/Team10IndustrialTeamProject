@@ -1,0 +1,152 @@
+{
+  "stores": [
+    {
+      "store" : "Debenhams",
+      "id" : 15
+    },
+    {
+      "store" : "H&M",
+      "id" : 17
+    },
+    {
+      "store" : "Next",
+      "id" : 19
+    },
+    {
+      "store" : "JD Sports",
+      "id" : 111
+    },
+    {
+      "store" : "Schuh",
+      "id" : 113
+    },
+    {
+      "store" : "Smiggle",
+      "id" : 114
+    },
+    {
+      "store" : "River Island",
+      "id" : 115
+    },
+    {
+      "store" : "Oasis",
+      "id" : 116
+    },
+    {
+      "store" : "Office",
+      "id" : 117
+    },
+    {
+      "store" : "Claire's",
+      "id" : 118
+    },
+    {
+      "store" : "Carphone Warehouse",
+      "id" : 119
+    },
+    {
+      "store" : "Paperchase",
+      "id" : 120
+    },
+    {
+      "store" : "Holland & Barret",
+      "id" : 121
+    },
+    {
+      "store" : "Tiger",
+      "id" : 122
+    },
+    {
+      "store" : "TopShop",
+      "id" : 123
+    },
+    {
+      "store" : "Quiz",
+      "id" : 124
+    },
+    {
+      "store" : "Virgin Media",
+      "id" : 125
+    },
+    {
+      "store" : "Five Guys",
+      "id" : 126
+    },
+    {
+      "store" : "Frankie & Benny's",
+      "id" : 127
+    },
+    {
+      "store" : "Bodycare",
+      "id" : 129
+    },
+    {
+      "store" : "Vodafone",
+      "id" : 131
+    },
+    {
+      "store" : "Ernest Jones",
+      "id" : 132
+    },
+    {
+      "store" : "EE",
+      "id" : 133
+    },
+    {
+      "store" : "Clinton Cards",
+      "id" : 134
+    },
+    {
+      "store" : "Superdrug",
+      "id" : 135
+    },
+    {
+      "store" : "New Look",
+      "id" : 140
+    },
+    {
+      "store" : "Boots",
+      "id" : 141
+    },
+    {
+      "store" : "Primark",
+      "id" : 158
+    },
+    {
+      "store" : "The Fragrance Shop",
+      "id" : 156
+    },
+    {
+      "store" : "Little Thistle ",
+      "id" : 155
+    },
+    {
+      "store" : "Three ",
+      "id" : 171
+    },
+    {
+      "store" : "Greggs",
+      "id" : 170
+    },
+    {
+      "store" : "Warren James",
+      "id" : 154
+    },
+    {
+      "store" : "O2",
+      "id" : 153
+    },
+    {
+      "store" : "Swarovski",
+      "id" : 152
+    },
+    {
+      "store" : "The Perfume Shop",
+      "id" : 151
+    },
+    {
+      "store" : "Goldsmiths",
+      "id" : 150
+    }
+  ]
+}

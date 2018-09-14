@@ -18,7 +18,6 @@ Runs on NPM / Node.JS. Clone the repo and run the following
 Then navigate to `http://localhost:5000` in your favourite browser <sub>[(not IE...)](
 breakupwithie8.com/)</sub>
 
-
 ## Tools, frameworks and libraries we like
 
 - [Express](https://expressjs.com) - Lightweight framework to run NodeJS on the server.  
@@ -41,7 +40,3 @@ breakupwithie8.com/)</sub>
 <p align="center">
   <img src="https://i.imgur.com/Vqs2KMs.png"/>
 </p>
-
-
-
-ga
