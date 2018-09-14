@@ -3,6 +3,6 @@ module.exports = function(app) {
         .get((req,res) => res.render('pages/example')); <--- NOTE THE SEMICOLON */
     app.route('/')
         .get((req,res) => res.render('pages/index'));
-    app.route('/MapWithJSON')
+    app.route('/map')
     	.get((req,res) => res.render('pages/MapUsingJson'));
 }

@@ -12,6 +12,13 @@ app.use(express.static(path.join(__dirname, 'public')))
 //Importing routes
 routes(app);
 
+// Setup express static middleware to look for files in the api directory for all requests starting with /api
+app.use('/api', express.static('api') , function(req, res){
+    // Optional 404 handler
+    res.status(404);
+    res.json({error:{code:404}})
+});
+
 //404 handling
 app.use(function (req, res, next) {
   res.status(404);
