@@ -27,11 +27,14 @@
 
     <div class="presets">
             <h5>Very Pretty Presets</h5>
-            <button onclick="presetsUpdate(0)" id="SAD">SAD</p>
+            <button onclick="presetsUpdate(0); setEntityHighlights(red)" id="SAD">SAD</p>
             <button onclick="presetsUpdate(1)"id="NORMAL">NORMAL</p>
             <button onclick="presetsUpdate(2)"id="GOOD">GOOD</p>
     </div>
-   
+    <br><br>
+    <button onclick="setEntityHighlights()">Highlight entities</button>
+    <button onclick="clearEntityHighlights()">Clear entities highlights</button>
+
 </section>
 
 <script src="js/settings.js"></script>
