@@ -52,9 +52,53 @@ map.indoors.clearEntityHighlights();
 
 var indoorControl = new WrldIndoorControl("widget-container", map);
 
-function onIndoorMapEntered() {
-    map.indoors.setFloor(0);
-    map.setView([56.4598, -2.9728], 17);
+var currentIndoorMapId;
+var currentFloor;
+var entityIdsToPosition = {};
+      
+var lastMouseDown;
+
+function onMouseDown(event) {
+    lastMouseDown = event.latlng;
+}
+      
+function onIndoorEntityClicked(event) {
+    event.ids.forEach(identifyEntity);
 }
 
-    map.indoors.on("indoormapenter", onIndoorMapEntered);
+function exportIdMap() {
+    console.log(JSON.stringify(entityIdsToPosition));
+}
+      
+function onIndoorMapEntered(event) {
+    map.indoors.setFloor(0);
+    map.setView([56.4598, -2.9728], 17);
+    currentIndoorMapId = event.indoorMap.getIndoorMapId();
+    currentFloor = map.indoors.getFloor().getFloorIndex();
+}
+      
+function onIndoorMapFloorChanged() {
+    currentFloor = map.indoors.getFloor().getFloorIndex();
+}
+      
+function identifyEntity(id) {
+    var latLng = lastMouseDown;
+        
+    var popupOptions = { 
+        indoorMapId: currentIndoorMapId, 
+        indoorMapFloorIndex: currentFloor, 
+        autoClose: false, 
+        closeOnClick: false,
+        minWidth: "5"          
+    };
+    var popup = L.popup(popupOptions)
+        .setLatLng(latLng)
+        .addTo(map)
+        .setContent(id);
+    entityIdsToPosition[id] = { "latLng": latLng, "indoorId": currentIndoorMapId, "floorIndex": currentFloor } ;
+}
+
+map.indoors.on("indoormapenter", onIndoorMapEntered);
+map.indoors.on("indoormapfloorchange", onIndoorMapFloorChanged)
+map.indoors.on("indoorentityclick", onIndoorEntityClicked);
+map.on("mousedown", onMouseDown);
