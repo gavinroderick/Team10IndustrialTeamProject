@@ -80,6 +80,8 @@ function onIndoorMapEntered(event) {
 function onIndoorMapFloorChanged() {
     currentFloor = map.indoors.getFloor().getFloorIndex();
 }
+
+var d = new Date();
       
 function identifyEntity(id) {
     var latLng = lastMouseDown;
@@ -94,7 +96,7 @@ function identifyEntity(id) {
     var popup = L.popup(popupOptions)
         .setLatLng(latLng)
         .addTo(map)
-        .setContent(createMockHTMLElement(id));
+        .setContent(createMockHTMLElement(id, d));
     entityIdsToPosition[id] = { "latLng": latLng, "indoorId": currentIndoorMapId, "floorIndex": currentFloor } ;
 }
 
@@ -103,10 +105,11 @@ map.indoors.on("indoormapfloorchange", onIndoorMapFloorChanged)
 map.indoors.on("indoorentityclick", onIndoorEntityClicked);
 map.on("mousedown", onMouseDown);
 
-function createMockHTMLElement(id){
+function createMockHTMLElement(id, date){
     var graphHTML = '<div class="content">' +
                     '<h1>This store\'s id is ' + id + '</h1>' +
                     '<p>And here we would have a graph</p>' +
+                    '<p>' + date.getDate() + '</p>' +
                     '<p><strong>Note:</strong> If you don\'t escape "quotes" properly, it will not work.</p>' +
                     '</div>';
     return graphHTML;
