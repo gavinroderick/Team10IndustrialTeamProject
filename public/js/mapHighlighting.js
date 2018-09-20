@@ -1,3 +1,32 @@
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = google.visualization.arrayToDataTable([
+          ['Time', 'Occupency'],
+          ['9:00',  1000],
+          ['9:15',  1170],
+          ['9:30',   660],
+          ['9:45',  1030]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div_id'));
+
+      chart.draw(data, options);
+      return(chart);
+    }
+
+
+
+
+
 var groundFloor;
 
 var requestURL = 'api/groundFloorStores.json';
@@ -98,6 +127,9 @@ function identifyEntity(id) {
         .addTo(map)
         .setContent(createMockHTMLElement(id, d));
     entityIdsToPosition[id] = { "latLng": latLng, "indoorId": currentIndoorMapId, "floorIndex": currentFloor } ;
+
+    drawBasic();
+    update()
 }
 
 map.indoors.on("indoormapenter", onIndoorMapEntered);
@@ -108,7 +140,7 @@ map.on("mousedown", onMouseDown);
 function createMockHTMLElement(id, date){
     var graphHTML = '<div class="content">' +
                     '<h1>This store\'s id is ' + id + '</h1>' +
-                    '<p>And here we would have a graph</p>' +
+                    '<div id="chart_div_id"></div>' +
                     '<p>' + date.getDate() + '</p>' +
                     '<p><strong>Note:</strong> If you don\'t escape "quotes" properly, it will not work.</p>' +
                     '</div>';
