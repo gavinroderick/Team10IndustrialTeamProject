@@ -1,26 +1,31 @@
 google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawBasic);
 
-function drawBasic() {
+function drawBasic(id) {
 
-      var data = google.visualization.arrayToDataTable([
-          ['Time', 'Occupency'],
-          ['9:00',  1000],
-          ['9:15',  1170],
-          ['9:30',   660],
-          ['9:45',  1030]
-        ]);
+      dataToArray(id);
+
+      var data = google.visualization.arrayToDataTable( 
+
+        [
+          ['Time', 'Occupency', 'Noise', 'Humidity'],
+          ['9:00',  1000,        700,     800],
+          ['9:15',  1170,        972,     300],
+          ['9:30',  660,         200,     900],
+          ['9:45',  1030,        1100,    630]
+        ]
+        );
 
         var options = {
           title: 'Company Performance',
           curveType: 'function',
+          width: '200px',
           legend: { position: 'bottom' }
         };
 
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div_id'));
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div_' +id));
 
       chart.draw(data, options);
-      return(chart);
     }
 
 
@@ -51,6 +56,20 @@ request_1.onload = function() {
     var firstFloorStores = request_1.response;
     var obj = JSON.parse(firstFloorStores);
     firstFloor = obj;
+}
+
+var storeData;
+
+var requestURL_2 = 'api/data.json';
+var request_2 = new XMLHttpRequest();
+request_2.open('GET', requestURL_2);
+request_2.send();
+
+request_2.onload = function() {
+    var storeDatas = request_2.response;
+    var obj = JSON.parse(storeDatas);
+    storeData = obj;
+    console.log(obj);
 }
 
 var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
@@ -128,9 +147,12 @@ function identifyEntity(id) {
         .setContent(createMockHTMLElement(id, d));
     entityIdsToPosition[id] = { "latLng": latLng, "indoorId": currentIndoorMapId, "floorIndex": currentFloor } ;
 
-    drawBasic();
-    update()
+
+    
+    drawBasic(id);
+    update();
 }
+
 
 map.indoors.on("indoormapenter", onIndoorMapEntered);
 map.indoors.on("indoormapfloorchange", onIndoorMapFloorChanged)
@@ -140,9 +162,40 @@ map.on("mousedown", onMouseDown);
 function createMockHTMLElement(id, date){
     var graphHTML = '<div class="content">' +
                     '<h1>This store\'s id is ' + id + '</h1>' +
-                    '<div id="chart_div_id"></div>' +
+                    '<div id="chart_div_' +id+'"></div>' +
                     '<p>' + date.getDate() + '</p>' +
                     '<p><strong>Note:</strong> If you don\'t escape "quotes" properly, it will not work.</p>' +
                     '</div>';
     return graphHTML;
 }
+
+function dataToArray(storeID) {
+
+
+    var counter = 0;
+
+    do{
+        console.log("Hello World");
+        console.log(storeData[0]);
+
+        counter ++;
+
+    }while (storeDat[0]['history'][0]['times'][counter+1] != null)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
