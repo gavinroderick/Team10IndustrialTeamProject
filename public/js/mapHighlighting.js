@@ -1,37 +1,6 @@
 google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawBasic);
 
-function drawBasic(id) {
-
-      dataToArray(id);
-
-      var data = google.visualization.arrayToDataTable( 
-
-        [
-          ['Time', 'Occupency', 'Noise', 'Humidity'],
-          ['9:00',  1000,        700,     800],
-          ['9:15',  1170,        972,     300],
-          ['9:30',  660,         200,     900],
-          ['9:45',  1030,        1100,    630]
-        ]
-        );
-
-        var options = {
-          title: 'Company Performance',
-          curveType: 'function',
-          width: '200px',
-          legend: { position: 'bottom' }
-        };
-
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div_' +id));
-
-      chart.draw(data, options);
-    }
-
-
-
-
-
 var groundFloor;
 
 var requestURL = 'api/groundFloorStores.json';
@@ -69,7 +38,7 @@ request_2.onload = function() {
     var storeDatas = request_2.response;
     var obj = JSON.parse(storeDatas);
     storeData = obj;
-    console.log(obj);
+    //console.log(obj);
 }
 
 var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
@@ -77,6 +46,74 @@ var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
     zoom: 17,
     indoorsEnabled: true
 });
+
+
+function drawBasic(id) {
+
+      var store;
+
+      for( var i = 0; i < groundFloor.stores.length; i++)
+      {
+          if (storeData[i]['id'] == id)
+          {
+              store = i;
+              break;
+          }
+      }
+
+      var data = new google.visualization.DataTable();
+
+      data.addColumn('string', 'Time');
+      data.addColumn('number', 'Occupancy');
+      data.addColumn('number', 'Noise');
+      data.addColumn('number', 'Humidity');
+
+
+      for( var i = 1; i < 41; i++)
+      {
+
+        var timeslot = storeData[store]['history'][0]['times'][i-1]['timeslot'].toString();
+        var timeslotArray = timeslot.split('');
+        
+        var hour = timeslotArray[11].concat(timeslotArray[12]);
+        var min = timeslotArray[14].concat(timeslotArray[15]);
+        var time = hour.concat(min);
+
+
+
+
+        data.addRows([
+            [
+                
+                time, 
+                storeData[store]['history'][0]['times'][i-1]['occupancy']*100, 
+                storeData[store]['history'][0]['times'][i-1]['noise']*100,
+                storeData[store]['history'][0]['times'][i-1]['humidity']*100
+            ]
+        ]
+        );
+
+      }
+
+
+        var options = {
+          title: 'Store ' + id,
+          curveType: 'function',
+          width: '1000',
+          legend: { position: 'bottom' }
+        };
+
+      var chart_div = document.getElementById('chart_div');
+      var chart = new google.visualization.LineChart(chart_div);
+
+      // Wait for the chart to finish drawing before calling the getImageURI() method.
+      google.visualization.events.addListener(chart, 'ready', function () {
+        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+      });
+
+      chart.draw(data, options);
+      return('<img src="' + chart.getImageURI() + '">');
+    }
 
 function setEntityHighlights() {
     
@@ -133,24 +170,28 @@ var d = new Date();
       
 function identifyEntity(id) {
     var latLng = lastMouseDown;
-        
+    console.log(latLng);
+    ;
+    map.setView(latLng);
+
+    var graphText = drawBasic(id);
+
     var popupOptions = { 
         indoorMapId: currentIndoorMapId, 
         indoorMapFloorIndex: currentFloor, 
-        autoClose: false, 
-        closeOnClick: false,
-        minWidth: "5"          
+        autoClose: true, 
+        keepInView: true,
+        closeOnClick: true,
+        minWidth: "1000"          
     };
     var popup = L.popup(popupOptions)
         .setLatLng(latLng)
         .addTo(map)
-        .setContent(createMockHTMLElement(id, d));
+        .setContent(createMockHTMLElement(id, d, graphText));
     entityIdsToPosition[id] = { "latLng": latLng, "indoorId": currentIndoorMapId, "floorIndex": currentFloor } ;
 
-
     
-    drawBasic(id);
-    update();
+
 }
 
 
@@ -159,29 +200,15 @@ map.indoors.on("indoormapfloorchange", onIndoorMapFloorChanged)
 map.indoors.on("indoorentityclick", onIndoorEntityClicked);
 map.on("mousedown", onMouseDown);
 
-function createMockHTMLElement(id, date){
+function createMockHTMLElement(id, date, graphText){
     var graphHTML = '<div class="content">' +
                     '<h1>This store\'s id is ' + id + '</h1>' +
-                    '<div id="chart_div_' +id+'"></div>' +
+                    '<div if="chart_div"></div>' +
+                    graphText +
                     '<p>' + date.getDate() + '</p>' +
                     '<p><strong>Note:</strong> If you don\'t escape "quotes" properly, it will not work.</p>' +
                     '</div>';
     return graphHTML;
-}
-
-function dataToArray(storeID) {
-
-
-    var counter = 0;
-
-    do{
-        console.log("Hello World");
-        console.log(storeData[0]);
-
-        counter ++;
-
-    }while (storeDat[0]['history'][0]['times'][counter+1] != null)
-
 }
 
 
