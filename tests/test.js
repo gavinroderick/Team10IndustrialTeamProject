@@ -20,7 +20,7 @@ describe("Index page", function(){
 describe("TestMap page", function(){
   it("should return 200", function(done){
     request
-      .get(url + "/TestMap")
+      .get(url + "/map")
       .then(res => {
         expect(res.status).to.equal(200);
         done();

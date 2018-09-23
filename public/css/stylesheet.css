@@ -2,3 +2,78 @@ body{
     background-color:honeydew;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+#setting{
+	height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+}
+#map{
+    height: 500px;
+}
+#setting h1 {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 26px;
+    color: #ffffff;
+    display: block;
+    text-align : center;
+}
+
+#mapContainer {
+    margin-left: 20%;
+    padding: 0px 0px;
+}
+
+section#settings{
+    float: left;
+    background-color: lightgray;
+    text-align: center;
+    width: 15%;
+}
+.dummyMap{
+    float:right;
+    background-color: lightgray;
+    text-align: center;
+}
+.slider{
+    vertical-align: middle;
+}
+
+.rangePicker{
+    width: 60%!important;
+}
+.end-labels{
+    font-size: 10px;
+}
+
+.presets{
+    margin: 5px;
+}
+.presets button{
+    display: table-cell;
+    margin: 0 auto;
+    padding: 8 2 0 2;
+    border: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.presets #SAD {
+    background-color: red!important;
+    float: left;
+}
+.presets #GOOD {
+    background-color: green!important;
+    float: right;
+}
+.presets #NORMAL {
+    background-color: orange!important;
+}
+h5{
+    margin: 0;
+}
