@@ -13,7 +13,7 @@ body{
     overflow-x: hidden;
 }
 #map{
-    height: 500px;
+    height: 100%;
 }
 #setting h1 {
     padding: 6px 8px 6px 16px;
@@ -24,16 +24,9 @@ body{
     text-align : center;
 }
 
-#mapContainer {
-    margin-left: 20%;
-    padding: 0px 0px;
-}
-
 section#settings{
-    float: left;
     background-color: lightgray;
     text-align: center;
-    width: 15%;
 }
 .dummyMap{
     float:right;
@@ -76,4 +69,9 @@ section#settings{
 }
 h5{
     margin: 0;
+}
+
+.navbar{
+    background-color: #0071bc;
+    margin-bottom: 10px;
 }

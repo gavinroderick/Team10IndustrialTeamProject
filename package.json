@@ -17,6 +17,8 @@
     "mocha": "^5.2.0",
     "moment": "^2.22.2",
     "nodemon": "^1.18.4",
+    "superagent": "^3.8.3",
+    "travis": "^0.1.1",
     "request": "^2.88.0",
     "superagent": "^3.8.3"
   },
