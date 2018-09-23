@@ -1,0 +1,66 @@
+[
+    {
+        shopID: 1
+        history:[
+            {
+                date: 20/12/18
+                    times: [
+                        {
+                            timeslot: 0900,
+                            noise: 12,
+                            people: 12
+                        },
+                        {
+                            timeslot: 0900,
+                            noise: 12,
+                            people: 12
+                        }
+                    ]
+            },
+            {
+                date: 20/12/18
+                    times: [
+                        {
+                            timeslot: 0900,
+                            noise: 12,
+                            people: 12
+                        },
+                        {
+                            timeslot: 0900,
+                            noise: 12,
+                            people: 12
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        shopID: 2
+    },
+    {
+
+    }
+]
+
+function name(){
+    var date = 12;
+
+    var times = []
+
+    var history = {
+        date: 20/12/18,
+        times
+    }
+
+    var shop = {
+        date,
+        history
+    }
+
+    var allshops = []
+
+    allshops[0]['shopID']
+    allshops[0]['history'][0]['times'][0]['people']
+    var shopID1at9am = allshops[0]['history'][0]['times'][0];
+}
