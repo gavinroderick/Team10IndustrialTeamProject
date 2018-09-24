@@ -19,8 +19,7 @@
     "nodemon": "^1.18.4",
     "superagent": "^3.8.3",
     "travis": "^0.1.1",
-    "request": "^2.88.0",
-    "superagent": "^3.8.3"
+    "request": "^2.88.0"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha tests/* "

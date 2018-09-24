@@ -11,7 +11,6 @@
   <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/indoor_control/latest/indoor_control.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-  <link rel="stylesheet" href="style.css">
 
   <% include ../partials/header.ejs %>
   </head>
@@ -19,7 +18,6 @@
   <body>
   
     <% include ../partials/nav.ejs %>
-    <% include ../partials/settings.ejs %>
 
   
 
@@ -27,13 +25,12 @@
   <div class="container-fluid">
     <div class="row">      
       <div class="col-3"><% include ../partials/settings.ejs %></div>
-      <div class="col-8">
+      <div class="col-9">
         <div id="widget-container" class="wrld-widget-container"></div>
         <div id="map"></div>
         <script src="js/mapHighlighting.js"></script>
       </div>
     </div>
-    <div id = "chart_div"></div>
   </div>
 </body>
 
