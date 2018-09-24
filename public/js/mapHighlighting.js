@@ -107,6 +107,7 @@ function drawBasic(id) {
         var options = {
           hAxis: { 
             showTextEvery : '4',
+            gridlines :{count: '10'}
           },
           title: 'Store ' + id,
           curveType: 'function',
