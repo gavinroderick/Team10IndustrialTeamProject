@@ -60,6 +60,14 @@ function drawBasic(id) {
               break;
           }
       }
+      for( var i = 0; i < firstFloor.stores.length; i++)
+      {
+          if (storeData[i]['id'] == id)
+          {
+              store = i;
+              break;
+          }
+      }
 
       var data = new google.visualization.DataTable();
 
@@ -97,6 +105,10 @@ function drawBasic(id) {
 
 
         var options = {
+          hAxis: { 
+            showTextEvery : '4',
+            gridlines :{count: '10'}
+          },
           title: 'Store ' + id,
           curveType: 'function',
           width: '1000',
@@ -107,9 +119,7 @@ function drawBasic(id) {
       var chart = new google.visualization.LineChart(chart_div);
 
       // Wait for the chart to finish drawing before calling the getImageURI() method.
-      google.visualization.events.addListener(chart, 'ready', function () {
-        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-      });
+      google.visualization.events.addListener(chart, 'ready', function () { });
 
       chart.draw(data, options);
       return('<img src="' + chart.getImageURI() + '">');
@@ -166,30 +176,52 @@ function onIndoorMapFloorChanged() {
     currentFloor = map.indoors.getFloor().getFloorIndex();
 }
 
+function validId(id) {
+
+    for( var i = 0; i < groundFloor.stores.length; i++)
+    {
+          if (storeData[i]['id'] == id)
+          {
+              return true;
+          }
+    }
+    for( var i = 0; i < firstFloor.stores.length; i++)
+    {
+          if (storeData[i]['id'] == id)
+          {
+              return true;
+          }
+    }
+    return false;
+}
+
 var d = new Date();
       
 function identifyEntity(id) {
-    var latLng = lastMouseDown;
-    console.log(latLng);
-    ;
-    map.setView(latLng);
 
-    var graphText = drawBasic(id);
+    var valid = validId(id);
 
-    var popupOptions = { 
-        indoorMapId: currentIndoorMapId, 
-        indoorMapFloorIndex: currentFloor, 
-        autoClose: true, 
-        keepInView: true,
-        closeOnClick: true,
-        minWidth: "1000"          
-    };
-    var popup = L.popup(popupOptions)
-        .setLatLng(latLng)
-        .addTo(map)
-        .setContent(createMockHTMLElement(id, d, graphText));
-    entityIdsToPosition[id] = { "latLng": latLng, "indoorId": currentIndoorMapId, "floorIndex": currentFloor } ;
+    if(valid == true)
+    {
+        var latLng = lastMouseDown;
+        map.setView(latLng);
 
+        var graphText = drawBasic(id);
+
+        var popupOptions = { 
+            indoorMapId: currentIndoorMapId, 
+            indoorMapFloorIndex: currentFloor, 
+            autoClose: true, 
+            keepInView: true,
+            closeOnClick: true,
+            minWidth: "1000"          
+        };
+        var popup = L.popup(popupOptions)
+            .setLatLng(latLng)
+            .addTo(map)
+            .setContent(createMockHTMLElement(id, d, graphText));
+        entityIdsToPosition[id] = { "latLng": latLng, "indoorId": currentIndoorMapId, "floorIndex": currentFloor } ;
+    }
     
 
 }
