@@ -52,16 +52,20 @@
     {
         var dates = [];
         var today = new moment().utc().set({'hour': 9,'minute': 0,'second': 0,'millisecond': 0});
+       // dates.push(today)
         for (var i = 0; i<21; i++)
         {
-            dates.push(today.add(-1, 'day').toDate());
+            dates.push(today.add(-i, 'day').toDate());
             /*  
             /   Might be useful later
             /   dates[i][j] = today.add(15, 'minute').toDate();
-            /   today = moment().utc().set({'day': -i ,'hour': 9, 'minute': 0,'seconds': 0});
-            */ 
+            /  */ 
+            today = moment().utc().set({ 'hour': 9, 'minute': 0,'seconds': 0});
+            
         }
+        console.log(dates);
         return dates;
+        
     }
 
     /* 
