@@ -60,7 +60,7 @@
             /   Might be useful later
             /   dates[i][j] = today.add(15, 'minute').toDate();
             /  */ 
-            today = moment().utc().set({ 'hour': 9, 'minute': 0,'seconds': 0});
+            today = moment().utc().set({ 'hour': 9, 'minute': 0,'seconds': 0,'millisecond': 0});
             
         }
         console.log(dates);
