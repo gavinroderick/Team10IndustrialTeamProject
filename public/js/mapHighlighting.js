@@ -109,9 +109,11 @@ function drawBasic(id) {
             showTextEvery : '4',
             gridlines :{count: '10'}
           },
-          title: 'Store ' + id,
+          vAxis: {
+            baseline: 0
+          },
           curveType: 'function',
-          width: '1000',
+          width: '700',
           legend: { position: 'bottom' }
         };
 
@@ -182,29 +184,31 @@ function validId(id) {
     {
           if (storeData[i]['id'] == id)
           {
-              return true;
+              return i;
           }
     }
     for( var i = 0; i < firstFloor.stores.length; i++)
     {
           if (storeData[i]['id'] == id)
           {
-              return true;
+              return i;
           }
     }
-    return false;
+    return null;
 }
 
 var d = new Date();
       
 function identifyEntity(id) {
 
-    var valid = validId(id);
+    var storeInArray = validId(id);
 
-    if(valid == true)
+    if(storeInArray != null)
     {
         var latLng = lastMouseDown;
         map.setView(latLng);
+
+        var store = groundFloor.stores[storeInArray].store;
 
         var graphText = drawBasic(id);
 
@@ -214,12 +218,12 @@ function identifyEntity(id) {
             autoClose: true, 
             keepInView: true,
             closeOnClick: true,
-            minWidth: "1000"          
+            minWidth: "700"          
         };
         var popup = L.popup(popupOptions)
             .setLatLng(latLng)
             .addTo(map)
-            .setContent(createMockHTMLElement(id, d, graphText));
+            .setContent(createMockHTMLElement(id, d, graphText, store));
         entityIdsToPosition[id] = { "latLng": latLng, "indoorId": currentIndoorMapId, "floorIndex": currentFloor } ;
     }
     
@@ -232,13 +236,10 @@ map.indoors.on("indoormapfloorchange", onIndoorMapFloorChanged)
 map.indoors.on("indoorentityclick", onIndoorEntityClicked);
 map.on("mousedown", onMouseDown);
 
-function createMockHTMLElement(id, date, graphText){
+function createMockHTMLElement(id, date, graphText, store){
     var graphHTML = '<div class="content">' +
-                    '<h1>This store\'s id is ' + id + '</h1>' +
-                    '<div if="chart_div"></div>' +
+                    '<h1>'+ store +' on the '+ date.getDate() +' of Spetember</h1>' +
                     graphText +
-                    '<p>' + date.getDate() + '</p>' +
-                    '<p><strong>Note:</strong> If you don\'t escape "quotes" properly, it will not work.</p>' +
                     '</div>';
     return graphHTML;
 }
