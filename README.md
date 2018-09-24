@@ -4,7 +4,7 @@
 A project by Team 10 of the Industrial Team Project Module @ Universtiy of Dundee 2018/19
 
 ## Demo 
-- [Our example](https://herokuwebsitegoeshere.com) - Running on heroku, this is the main outcome of our project. 
+- [Our example](https://team10-itp.herokuapp.com/map) - Running on heroku, this is the main outcome of our project. 
 
 ## Installation and usage
 Runs on NPM / Node.JS. Clone the repo and run the following
@@ -22,8 +22,10 @@ breakupwithie8.com/)</sub>
 
 - [Express](https://expressjs.com) - Lightweight framework to run NodeJS on the server.  
 - [Nodemon](https://nodemon.io/) - Monitors for changes in the code and automatically restarts the server. Lovely stuff.
+- [TravisCI](https://travis-ci.org) - A nice easy to use testing library for NodeJS.
 - [Mocha](https://mochajs.org) - A nice easy to use testing library for NodeJS.
 - [Chai](https://github.com/chaijs) - An assertation library that makes mocha even sweeter to use.
+- [Moment](https://momentjs.org) - Date manipulation made eady. Helps to format dates/timezones and simplifies changing them.
 
 ## Authors
 
