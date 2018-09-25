@@ -12,7 +12,6 @@
   "dependencies": {
     "chai": "^4.1.2",
     "debug": "^4.0.1",
-    "del": "^3.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "gulp-concat": "^2.6.1",
@@ -28,6 +27,8 @@
     "test": "./node_modules/.bin/mocha tests/* "
   },
   "devDependencies": {
-    "gulp": "github:gulpjs/gulp#4.0"
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "vinyl-paths": "^2.1.0"
   }
 }
