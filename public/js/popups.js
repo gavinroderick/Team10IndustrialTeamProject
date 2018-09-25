@@ -10,7 +10,6 @@ var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
   var d;
   var popup;
   
-  
   var lastMouseDown;
   function onMouseDown(event) {
     lastMouseDown = event.latlng;
@@ -67,12 +66,6 @@ var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
     }
     return null;
 }
-
-
-//For Demo
-var counter = 1;
-var currentHour = 9;
-var currentMin = 0;
   
   function identifyEntity(id) {
     var latLng = lastMouseDown;
@@ -82,9 +75,7 @@ var currentMin = 0;
 
     if(valid != null)
     {
-      //map.setView(latLng, 17);
-
-      d = displayTime();
+      map.setView(latLng, 17);
       
       var popupOptions = { 
         indoorMapId: currentIndoorMapId, 
@@ -96,30 +87,11 @@ var currentMin = 0;
       popup = L.popup(popupOptions)
         .setLatLng(latLng)
         .addTo(map)
-        .setContent(createMockHTMLElement(id, d, fakeDrawBasic(id)));
+        .setContent(createMockHTMLElement(id, d, drawBasic(id)));
       entityIdsToPosition[id] = { "latLng": latLng, "indoorId": currentIndoorMapId, "floorIndex": currentFloor } ;
-
-      //For demo
-      if (counter == 0)
-      {
-        currentHour = currentHour + 1;
-        currentMin = 0;
-        console.log(currentHour);
-        console.log(currentMin);
-      } else {
-        currentMin = currentMin + 15;
-        console.log(currentHour);
-        console.log(currentMin);
-      }
-      if(counter == 3)
-      {
-        counter = 0;
-      }else{
-        counter++;
-      }
     }
 
-    // setTimeout(updatePopup(id, d), 5000);
+    setTimeout(updatePopup(id, d), 5000);
   }
 
   function updatePopup(id, d)
@@ -136,30 +108,11 @@ var currentMin = 0;
 
   function createMockHTMLElement(id, date, graphText){
     var graphHTML = '<div class="content">' +
-                    '<h2>'+ getStoreName(id) +  ' ' + date + '</h2>' +
+                    '<h2>'+ getStoreName(id) +  ' ' + d.toLocaleTimeString('it-IT') +
                     graphText +
                     '</div>';
     return graphHTML;
 }
-
-  function displayTime(){
-    var toReturn = "0";
-    var temp = "";
-    if (currentHour < 10 && currentMin == 0)
-    {
-        toReturn = toReturn.concat(currentHour).concat(":").concat("0").concat(currentMin);
-    } else if (currentHour < 10 && currentMin != 0)
-    {
-        toReturn = toReturn.concat(currentHour).concat(":").concat(currentMin);
-    } else if ( currentHour >= 10 && currentMin == 0)
-    {
-      toReturn = temp.concat(currentHour).concat(":").concat("0").concat(currentMin);
-    } else 
-    {
-      toReturn = temp.concat(currentHour).concat(":").concat(currentMin);
-    }
-    return toReturn;
-  }
 
 
 
