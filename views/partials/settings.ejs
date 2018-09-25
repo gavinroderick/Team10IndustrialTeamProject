@@ -4,7 +4,7 @@
     <div class="category" id="Occupancy">
         <label>Occupancy</label><br>
         <span class="end-labels">Low</span>
-        <input id="occupancy-slider" class="rangePicker" type="range"/>
+        <input id="occupancy-slider" class="rangePicker" onupdate="sliderUpdate()" type="range"/>
         <span class="end-labels">High</span>
     </div>
     <br>
@@ -22,7 +22,7 @@
         <span class="end-labels">Low</span>
     </div>
 
-    <div class="presets">
+    <div class="presets">SAD
             <h5>Very Pretty Presets</h5>
             <button onclick="presetsUpdate(0); setEntityHighlights(red)" id="SAD">SAD</p>
             <button onclick="presetsUpdate(1)"id="NORMAL">NORMAL</p>
@@ -31,8 +31,4 @@
     <br><br>
     <button onclick="setEntityHighlights()">Highlight entities</button>
     <button onclick="clearEntityHighlights()">Clear entities highlights</button>
-
-
 </section>
-
-<script src="js/settings.js"></script>

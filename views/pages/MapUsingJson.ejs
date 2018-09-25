@@ -17,21 +17,19 @@
   
   <body>
   
-    <% include ../partials/nav.ejs %>
-
-  
-
-  
+  <% include ../partials/nav.ejs %>
   <div class="container-fluid">
     <div class="row">      
       <div class="col-3"><% include ../partials/settings.ejs %></div>
       <div class="col-9">
         <div id="widget-container" class="wrld-widget-container"></div>
         <div id="map" style="height: 675px"></div>
-        <script src="js/mapHighlighting.js"></script>
       </div>
     </div>
   </div>
-  <div id="chart_div" style="visibility: hidden"></div>
+  <div id="chart_div"></div>
+
+  <script src="js/app.min.js"></script>
+  
 </body>
 </html>

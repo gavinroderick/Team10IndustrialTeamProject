@@ -1,38 +1,115 @@
-// google.charts.load('current', {packages: ['corechart', 'line']});
-// google.charts.setOnLoadCallback(drawBasic);
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBasic);
 
-// function drawBasic(data) {
 
-//       data = new google.visualization.DataTable();
-//       data.addColumn('number', 'X');
-//       data.addColumn('number', 'Dogs');
+    // var groundFloor;
+    // var groundFloorReqURL = 'api/groundFloorStores.json';
+    // var groundFloorReq = new XMLHttpRequest();
+    // groundFloorReq.open('GET', groundFloorReqURL);
+    // groundFloorReq.send();
+    // groundFloorReq.onload = () => {
+    //     var groundFloorStores = groundFloorReq.response;
+    //     var obj = JSON.parse(groundFloorStores);
+    //     groundFloor = obj;
+    // }
 
-//       data.addRows([
-//         [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
-//         [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
-//         [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
-//         [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
-//         [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
-//         [30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
-//         [36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
-//         [42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
-//         [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
-//         [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
-//         [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
-//         [66, 70], [67, 72], [68, 75], [69, 80]
-//       ]);
+    // var firstFloor;
+    // var firstFloorReqURL = 'api/firstFloorStores.json';
+    // var firstFloorReq = new XMLHttpRequest();
+    // firstFloorReq.open('GET', firstFloorReqURL);
+    // firstFloorReq.send();
+    // firstFloorReq.onload = () => {
+    //     var firstFloorStores = firstFloorReq.response;
+    //     var obj = JSON.parse(firstFloorStores);
+    //     firstFloor = obj;
+    // }
 
-//       var options = {
-//         hAxis: {
-//           title: 'Time'
-//         },
-//         vAxis: {
-//           title: 'Popularity'
-//         }
-//       };
+    // var storeData;
+    // var storeReqURL = 'api/data.json';
+    // var storeReq = new XMLHttpRequest();
+    // storeReq.open('GET', storeReqURL);
+    // storeReq.send();
+    // storeReq.onload = () => {
+    //     var storeDatas = storeReq.response;
+    //     var obj = JSON.parse(storeDatas);
+    //     storeData = obj;
+    // }
 
-//       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+function drawBasic(id) {
 
-//       chart.draw(data, options);
-//       return(chart);
-//     }
+    var store;
+
+    for( var i = 0; i < groundFloor.stores.length; i++)
+    {
+        if (storeData[i]['id'] == id)
+        {
+            store = i;
+            break;
+        }
+    }
+    for( var i = 0; i < firstFloor.stores.length; i++)
+    {
+        if (storeData[i]['id'] == id)
+        {
+            store = i;
+            break;
+        }
+    }
+
+    var data = new google.visualization.DataTable();
+
+    data.addColumn('string', 'Time');
+    data.addColumn('number', 'Occupancy');
+    data.addColumn('number', 'Noise');
+    data.addColumn('number', 'Humidity');
+
+
+    for( var i = 1; i < 41; i++)
+    {
+
+      var timeslot = storeData[store]['history'][0]['times'][i-1]['timeslot'].toString();
+      var timeslotArray = timeslot.split('');
+      
+      var hour = timeslotArray[11].concat(timeslotArray[12]);
+      var min = timeslotArray[14].concat(timeslotArray[15]);
+      var time = hour.concat(min);
+
+
+
+
+      data.addRows([
+          [
+              
+              time, 
+              storeData[store]['history'][0]['times'][i-1]['occupancy']*100, 
+              storeData[store]['history'][0]['times'][i-1]['noise']*100,
+              storeData[store]['history'][0]['times'][i-1]['humidity']*100
+          ]
+      ]
+      );
+
+    }
+
+
+      var options = {
+        hAxis: { 
+          showTextEvery : '4',
+          gridlines :{count: '10'}
+        },
+        vAxis: {
+          baseline: 0
+        },
+        curveType: 'function',
+        width: '700',
+        legend: { position: 'bottom' }
+      };
+
+    var chart_div = document.getElementById('chart_div');
+    var chart = new google.visualization.LineChart(chart_div);
+
+    // Wait for the chart to finish drawing before calling the getImageURI() method.
+    google.visualization.events.addListener(chart, 'ready', function () { });
+
+    chart.draw(data, options);
+    return('<img src="' + chart.getImageURI() + '">');
+}

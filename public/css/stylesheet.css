@@ -75,3 +75,7 @@ h5{
     background-color: #0071bc;
     margin-bottom: 10px;
 }
+
+.chart_div{
+    display:none;
+}
