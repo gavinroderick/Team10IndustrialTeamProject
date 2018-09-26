@@ -27,6 +27,7 @@ function getCurrentSliderLevel(){
     [].forEach.call(sliders, function (slider) {
         sliderArray.push(parseInt(slider.value, 10));
     });
+    console.log("Slider Values: " + sliderArray);
     return sliderArray;
 }
 
@@ -98,6 +99,7 @@ function checkValue(value, max, min){
     if(parseFloat(value) > max){ colourLevel = 5; };
     if(parseFloat(value) < min){ colourLevel = 1; };
     if(parseFloat(value) < max && parseFloat(value > min)){ colourLevel = 3; };
+    console.log("Value Being Checked: " + parseFloat(value) + " Colour Level" + colourLevel);
     return parseInt(colourLevel);
 }
 
@@ -107,7 +109,7 @@ function calculateColour(currentDataObj, max, min){
     var occupancy = currentDataObj.occupancy;
     var noise = currentDataObj.noise;
     var humidity = currentDataObj.humidity;
-
+    console.log("Occupany~Noise~Humidity: " + occupancy + " " + noise + " " + humidity)
     colourLevel += checkValue(occupancy,max,min);
     colourLevel += checkValue(noise, max, min);
     colourLevel += checkValue(humidity, max, min);
