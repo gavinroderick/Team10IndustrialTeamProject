@@ -28,6 +28,7 @@
     "test": "./node_modules/.bin/mocha tests/* "
   },
   "devDependencies": {
-    "gulp": "github:gulpjs/gulp#4.0"
+    "gulp": "github:gulpjs/gulp#4.0",
+    "vinyl-paths": "^2.1.0"
   }
 }
