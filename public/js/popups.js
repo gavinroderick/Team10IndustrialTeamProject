@@ -2,7 +2,7 @@ var map = L.Wrld.map("map", "9d876646f7d83cc709edbe204c81d546", {
     center: [56.4598, -2.9728],
     zoom: 17,
     indoorsEnabled: true
-  });
+});
   var indoorControl = new WrldIndoorControl("widget-container", map);
   var currentIndoorMapId;
   var currentFloor;

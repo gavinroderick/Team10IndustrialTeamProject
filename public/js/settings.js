@@ -3,10 +3,10 @@ window.onload = function (){
     var sliders = document.getElementsByClassName("rangePicker");
     // var textBoxes = document.getElementsByClassName("textBox");
     [].forEach.call(sliders, function (slider) {    
-        slider.min = 10;
-        slider.max = 50;
-        slider.step = 10;
-        slider.value = 30;
+        slider.min = 1;
+        slider.max = 5;
+        slider.step = 1;
+        slider.value = 3;
     });
 
     document.getElementById("SAD").addEventListener("click", presetsUpdate(0));
@@ -15,9 +15,9 @@ window.onload = function (){
 }
 
 function presetsUpdate(level){
-    var occupancy = [10,30,50];
-    var noise = [10,30,50];
-    var humidity = [10,30,50];
+    var occupancy = [1,3,5];
+    var noise = [1,3,5];
+    var humidity = [1,3,5];
 
     for(var i=0; i < 3; i++){
         document.getElementById("occupancy-slider").value = occupancy[level];
