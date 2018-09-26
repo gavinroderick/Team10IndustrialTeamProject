@@ -39,6 +39,10 @@ function drawBasic(id) {
 
     var store;
 
+    var currentTime = new Date();
+    var currentTimeArray = currentTime.toLocaleTimeString('it-IT').split(':');
+
+
     for( var i = 0; i < groundFloor.stores.length; i++)
     {
         if (storeData[i]['id'] == id)
@@ -62,6 +66,9 @@ function drawBasic(id) {
     data.addColumn('number', 'Occupancy');
     data.addColumn('number', 'Noise');
     data.addColumn('number', 'Humidity');
+    data.addColumn('number', 'Occupancy Prediction');
+    data.addColumn('number', 'Noise Prediction');
+    data.addColumn('number', 'Humidity Prediction');
 
 
     for( var i = 1; i < 41; i++)
@@ -72,22 +79,70 @@ function drawBasic(id) {
       
       var hour = timeslotArray[11].concat(timeslotArray[12]);
       var min = timeslotArray[14].concat(timeslotArray[15]);
-      var time = hour.concat(min);
+      var time = hour.concat(":");
+      time = time.concat(min);
 
-
-
-
-      data.addRows([
-          [
-              
-              time, 
-              storeData[store]['history'][0]['times'][i-1]['occupancy']*100, 
-              storeData[store]['history'][0]['times'][i-1]['noise']*100,
-              storeData[store]['history'][0]['times'][i-1]['humidity']*100
+      if(hour < currentTimeArray[0])
+      {
+        data.addRows([
+              [
+                  
+                  time, 
+                  storeData[store]['history'][0]['times'][i-1]['occupancy']*100, 
+                  storeData[store]['history'][0]['times'][i-1]['noise']*100,
+                  storeData[store]['history'][0]['times'][i-1]['humidity']*100,
+                  null,
+                  null,
+                  null
+              ]
           ]
-      ]
-      );
-
+          );
+      } else if (hour == currentTimeArray[0]){
+        if(min <= currentTimeArray[1])
+        {
+          data.addRows([
+              [
+                  
+                  time, 
+                  storeData[store]['history'][0]['times'][i-1]['occupancy']*100, 
+                  storeData[store]['history'][0]['times'][i-1]['noise']*100,
+                  storeData[store]['history'][0]['times'][i-1]['humidity']*100,
+                  null,
+                  null,
+                  null
+              ]
+          ]
+          );
+        } else {
+          data.addRows([
+              [
+                  
+                  time, 
+                  null, 
+                  null,
+                  null,
+                  storeData[store]['history'][0]['times'][i-1]['occupancy']*100, 
+                  storeData[store]['history'][0]['times'][i-1]['noise']*100,
+                  storeData[store]['history'][0]['times'][i-1]['humidity']*100
+              ]
+          ]
+          );
+        }
+      }else {
+        data.addRows([
+              [
+                  
+                  time, 
+                  null, 
+                  null,
+                  null,
+                  storeData[store]['history'][0]['times'][i-1]['occupancy']*100, 
+                  storeData[store]['history'][0]['times'][i-1]['noise']*100,
+                  storeData[store]['history'][0]['times'][i-1]['humidity']*100
+              ]
+          ]
+          );
+      }
     }
 
 
