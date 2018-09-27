@@ -24,15 +24,6 @@ body{
     text-align : center;
 }
 
-section#settings{
-    background-color: lightgray;
-    text-align: center;
-}
-.dummyMap{
-    float:right;
-    background-color: lightgray;
-    text-align: center;
-}
 .slider{
     vertical-align: middle;
 }
@@ -54,18 +45,6 @@ section#settings{
     border: 0;
     text-align: center;
     vertical-align: middle;
-}
-
-.presets #SAD {
-    background-color: red!important;
-    float: left;
-}
-.presets #GOOD {
-    background-color: green!important;
-    float: right;
-}
-.presets #NORMAL {
-    background-color: orange!important;
 }
 h5{
     margin: 0;

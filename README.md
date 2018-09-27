@@ -11,9 +11,11 @@ Runs on NPM / Node.JS. Clone the repo and run the following
 
 	$ git clone https://github.com/gavinroderick/Team10IndustrialTeamProject.git
     
-    $ npm install
-    
-    $ node server.js
+  $ npm install
+  
+  $ gulp
+
+  $ node server.js
 
 Then navigate to `http://localhost:5000` in your favourite browser <sub>[(not IE...)](
 breakupwithie8.com/)</sub>

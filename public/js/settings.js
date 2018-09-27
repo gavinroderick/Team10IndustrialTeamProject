@@ -8,10 +8,6 @@ window.onload = function (){
         slider.step = 1;
         slider.value = 3;
     });
-
-    document.getElementById("SAD").addEventListener("click", presetsUpdate(0));
-    document.getElementById("GOOD").addEventListener("click", presetsUpdate(2));
-    document.getElementById("NORMAL").addEventListener("click", presetsUpdate(1));
 }
 
 function presetsUpdate(level){

@@ -1,35 +1,62 @@
-<section id="settings">
-    <h3>Settings</h3>
+<section id="">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title" style="padding-bottom: 0;margin-bottom:0;"><span class="oi oi-cog" title="Cog" aria-hidden="true"></span>&nbsp;Preferences</h2>
+        </div>
+        <div class="card-body">
+            <div class="presets">
+                <label>Default Select</label>
+                <div class="row">
+                    <button type="button" class="btn btn-danger" onclick="presetsUpdate(0);updateMapFromSliders()">
+                        <span class="oi oi-minus" title="icon name" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-warning" onclick="presetsUpdate(1);updateMapFromSliders()"><span class="oi oi-ellipses" title="icon name" aria-hidden="true"></span></button>
+                    <button type="button" class="btn btn-success"  onclick="presetsUpdate(2);updateMapFromSliders()"><span class="oi oi-plus" title="icon name" aria-hidden="true"></span></button>
+                </div>
+            </div>
+            <hr>
+            <div class="category" id="Occupancy">    
+                <div class="form-check-inline">
+                    <h6 class="form-check-label" for="occupancyCB">Occupancy</h6>&nbsp;
+                    <input class="form-check-input" type="checkbox" value="" checked id="ocucpancyCB">
+                </div>
+                <div class="form-group">
+                    <span class="oi oi-person" title="Person" aria-hidden="true"></span>
+                    <input id="occupancy-slider" class="rangePicker" onchange="updateMapFromSliders()" type="range"/>
+                    <span class="oi oi-people" title="People" aria-hidden="true"></span>
+                </div>
+            </div>  
+            <div class="category" id="Noise">    
+                <div class="form-check-inline">
+                    <h6 class="form-check-label" for="noiseCB">Noice</h6>&nbsp;
+                    <input class="form-check-input" type="checkbox" value="" checked id="noiseCB">
+                </div>
+                <div class="form-group">
+                    <span class="oi oi-volume-low" title="Volume Low" aria-hidden="true"></span>
+                    <input id="noise-slider" class="rangePicker" onchange="updateMapFromSliders()" type="range"/>
+                    <span class="oi oi-volume-high" title="Volume High" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="category" id="Light">    
+                    <div class="form-check-inline">
+                        <h6 class="form-check-label" for="lightCB">Light</h6>&nbsp;
+                        <input class="form-check-input" type="checkbox" value="" checked id="lightCB">
+                    </div>
+                    <div class="form-group">
+                    <span class="oi oi-minus" title="Minus" aria-hidden="true"></span>
+                    <input id="light-slider" class="rangePicker" onchange="updateMapFromSliders()" type="range"/>
+                    <span class="oi oi-infinity" title="Infinity" aria-hidden="true"></span></div>
+                </div>
+            <hr>
 
-    <div class="category" id="Occupancy">
-        <label>Occupancy</label><br>
-        <span class="end-labels">Low</span>
-        <input id="occupancy-slider" class="rangePicker" onchange="updateMapFromSliders()" type="range"/>
-        <span class="end-labels">High</span>
-    </div>
-    <br>
-    <div class="category" id="Noise">
-        <label>Noise</label><br>
-        <span class="end-labels">Low</span>
-        <input id="noise-slider"class="rangePicker" onchange="updateMapFromSliders()" type="range"/>
-        <span class="end-labels">High</span>
-    </div>
-    <br>
-    <div class="category" id="Humidity">
-        <label>Humidity</label><br>
-        <span class="end-labels">Low</span>
-        <input id="humidity-slider" class="rangePicker" onchange="updateMapFromSliders()" type="range"/>
-        <span class="end-labels">High</span>
-    </div>
 
-    <div class="presets">SAD
-            <h5>Very Pretty Presets</h5>
-            <button onclick="presetsUpdate(0);" id="SAD">SAD</p>
-            <button onclick="presetsUpdate(1)"id="NORMAL">NORMAL</p>
-            <button onclick="presetsUpdate(2)"id="GOOD">GOOD</p>
+            <button type="button" class="btn btn-success btn-block" onclick="setEntityHighlights()">Highlight Stores</button>
+            <!-- <button type="button" class="btn btn-success btn-block" onclick="setEntityHighlights()">Highlight Stores</button> -->
+            <button type="button" class="btn btn-danger btn-block" onclick="clearEntityHighlights()">Clear Highlights</button>
+            <!-- <button onclick="setEntityHighlights()">Highlight entities</button> -->
+            <!-- <button onclick="clearEntityHighlights()">Clear entities highlights</button>
+            <button onclick="setStoreHighlights(15, [255,0,0,200])">set store entities highlights</button> -->
+        </div>
+
     </div>
-    <br><br>
-    <button onclick="setEntityHighlights()">Highlight entities</button>
-    <button onclick="clearEntityHighlights()">Clear entities highlights</button>
-    <button onclick="setStoreHighlights(15, [255,0,0,200])">set store entities highlights</button>
 </section>
