@@ -152,7 +152,7 @@ function drawBasic(id) {
           gridlines :{count: '10'}
         },
         vAxis: {
-          baseline: 0
+          baseline: "0"
         },
         curveType: 'function',
         width: '700',

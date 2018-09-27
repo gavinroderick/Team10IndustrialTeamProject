@@ -1,11 +1,5 @@
 function setEntityHighlights() {
-    for(var i = 0; i < groundFloor.stores.length; i++){
-        map.indoors.setEntityHighlights(groundFloor.stores[i].id.toString(), randomColor());
-    }
-    for(var i = 0; i < firstFloor.stores.length; i++){
-        map.indoors.setEntityHighlights(firstFloor.stores[i].id.toString(), randomColor());
-    }
-
+    updateMapFromSliders();
 }
 function setStoreHighlights(store, colour){
     store = store.toString();
