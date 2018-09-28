@@ -18,6 +18,6 @@ function presetsUpdate(level){
     for(var i=0; i < 3; i++){
         document.getElementById("occupancy-slider").value = occupancy[level];
         document.getElementById("noise-slider").value = noise[level];
-        document.getElementById("humidity-slider").value = humidity[level];
+        document.getElementById("light-slider").value = humidity[level];
     }
 }
